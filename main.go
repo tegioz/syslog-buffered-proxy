@@ -88,7 +88,6 @@ func (f *forwarder) start() {
 			case logEntry := <-f.listenerCh:
 				log.Println("Log entry received:", logEntry)
 				f.store = append(f.store, logEntry)
-				log.Println(len(f.store))
 			case logEntry := <-f.reinjectCh:
 				log.Println("Log entry reinjected:", logEntry)
 				f.store = append(f.store, logEntry)
