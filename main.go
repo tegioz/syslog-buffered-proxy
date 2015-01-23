@@ -125,6 +125,8 @@ func (f *forwarder) forwardLogEntry(le syslogparser.LogParts) {
 }
 
 func main() {
+	flag.Parse()
+
 	// Setup syslog server listening on the port provided (tcp and udp)
 	listener := &listener{
 		listenOn: config.listenOn,
