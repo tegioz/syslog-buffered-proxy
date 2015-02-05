@@ -100,6 +100,8 @@ func (f *forwarder) start() {
 					f.store = f.store[1:len(f.store)]
 					log.Println("Getting log entry from store:", logEntry)
 					f.forwardCh <- logEntry
+				} else {
+					time.Sleep(1 * time.Second)
 				}
 			}
 		}
