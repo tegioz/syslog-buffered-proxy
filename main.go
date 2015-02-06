@@ -113,8 +113,8 @@ func (f *forwarder) forwardLogEntry(le syslogparser.LogParts) {
 	// Must match syslog's expected datetime format. Need to transform to RFC3339
 	_, err := fmt.Fprintf(
 		f.destination,
-		"<%d>%d %s %s %s %s %s\n",
-		le["priority"], 1, le["timestamp"].(time.Time).Format(time.RFC3339), le["hostname"], le["app_name"], le["proc_id"], le["message"],
+		"<%d>%d %s %s %s %s %s %s %s\n",
+		le["priority"], 1, le["timestamp"].(time.Time).Format(time.RFC3339), le["hostname"], le["app_name"], le["proc_id"], le["msg_id"], le["structured_data"], le["message"],
 	)
 	if err != nil {
 		// LogEntry wasn't forwarded successfully, reinject it in the store and try to reconnect
